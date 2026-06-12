@@ -1,0 +1,17 @@
+## Build artifacts
+bin/
+obj/
+.vs/
+
+## User secrets and local config
+**/appsettings.*.local.json
+**/secrets.json
+
+## IDE
+.idea/
+*.user
+*.suo
+
+## OS
+.DS_Store
+Thumbs.db

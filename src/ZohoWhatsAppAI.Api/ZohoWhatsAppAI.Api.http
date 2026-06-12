@@ -1,0 +1,46 @@
+@ZohoWhatsAppAI_HostAddress = http://localhost:5080
+
+### Analyze lead
+POST {{ZohoWhatsAppAI_HostAddress}}/api/ai/analyze-lead/mock-lead-001
+Content-Type: application/json
+
+{
+  "additionalContext": "Lead downloaded a pricing PDF yesterday."
+}
+
+### Generate WhatsApp message
+POST {{ZohoWhatsAppAI_HostAddress}}/api/whatsapp/generate-message/mock-lead-001
+Content-Type: application/json
+
+{
+  "templateType": 0,
+  "useTemplateBuilder": true,
+  "additionalContext": "Prefer a friendly tone."
+}
+
+### Save summary to Zoho CRM Notes
+POST {{ZohoWhatsAppAI_HostAddress}}/api/crm/save-summary/mock-lead-001
+Content-Type: application/json
+
+{
+  "includeAnalysis": true,
+  "title": "AI Qualification Summary"
+}
+
+### Build WhatsApp template
+POST {{ZohoWhatsAppAI_HostAddress}}/api/whatsapp/build-template
+Content-Type: application/json
+
+{
+  "templateType": 0,
+  "templateName": "lead_qualification_v1",
+  "purpose": "Initial lead qualification outreach"
+}
+
+### Conversation summary
+POST {{ZohoWhatsAppAI_HostAddress}}/api/whatsapp/conversation-summary/mock-lead-001
+Content-Type: application/json
+
+{
+  "conversationTranscript": "Agent: Hi Jane, thanks for your interest.\nLead: Looking for CRM integration.\nAgent: Happy to schedule a demo."
+}
